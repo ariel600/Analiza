@@ -1,7 +1,9 @@
 class Agent:
+    total_agents = 0
     def __init__(self, code_name: str, clearance_level: int):
         self.code_name = code_name
         self._clearance_level = clearance_level
+        Agent.total_agents += 1
 
     def report(self):
         return """Agent {} reporting. Clearance Level: {}""".format(self.code_name, self._clearance_level)
@@ -13,6 +15,10 @@ class Agent:
         if level < 1 or level > 10:
             return "You cannot change the level below 1 or above 10."
         self._clearance_level = level
+
+    @staticmethod
+    def get_total_agents():
+        print("Total agents created: {}".format(Agent.total_agents))
 
 class Mission():
     def __init__(self, mission_name: str, target_location: str, assigned_agent: Agent):
@@ -42,9 +48,3 @@ class CyberAgent(Agent):
 def print_agent(list_agent: list):
     for i in list_agent:
         print(i.report())
-        
-l = []
-l.append(Agent("ariel", 2))
-l.append(FieldAgent("pinchas", 2, "ashdid"))
-l.append(CyberAgent("eviatar", 2, "nerves"))
-print_agent(l)
