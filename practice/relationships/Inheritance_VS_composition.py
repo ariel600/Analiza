@@ -1,3 +1,5 @@
+from abc import ABC, abstractmethod
+
 class Vehicle:
     def __init__(self, max_speed: int):
         self.max_speed = max_speed
@@ -23,3 +25,9 @@ class Manager(Employee):
 class Developer(Employee):
     def write_code():
         print("write_code")
+
+class Shape(ABC):
+    @abstractmethod
+    def area():
+        pass
+
