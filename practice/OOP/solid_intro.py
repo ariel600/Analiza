@@ -31,3 +31,18 @@ class Calc_grades:
     @staticmethod
     def calculate_average(grades):
         return sum(grades) / len(grades)
+
+class Order:
+    def __init__(self, items: list[str], total_price: float):
+        self.items = items
+        self.total_price = total_price
+
+    def print_invoice(self):
+        print(f"items: {self.items}, total price: {self.total_price}")
+
+class InvoicePrinter:
+    def __init__(self):
+        pass
+    @staticmethod
+    def print_invoice(invoice: Order):
+        print(f"items: {invoice.items}, total price: {invoice.total_price}")
