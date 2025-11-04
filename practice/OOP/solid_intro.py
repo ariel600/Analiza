@@ -18,3 +18,16 @@ class Save_to_list:
     def print_list(self):
         for book in self.books_list:
             print(book)
+
+class Student:
+    def __init__(self, name: str, grades: list[int]):
+        self.name = name
+        self.grades = grades
+
+class Calc_grades:
+    def __init__(self):
+        pass
+    
+    @staticmethod
+    def calculate_average(grades):
+        return sum(grades) / len(grades)
