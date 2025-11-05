@@ -25,7 +25,6 @@ class Unit:
     def briefing(self):
         print(f"unit name: {self.unit_name}, commander: {self.commander}.")
 
-
 # Exercise 2
 class StrikeOption:
     def __init__(self, name: str, ammo: int):
@@ -48,3 +47,14 @@ class Drone(StrikeOption):
 
     def strike(self):
         print("Drone")
+
+# Exercise 5
+class Army:
+    total_attacks = 0
+    def __init__(self, units: list[Unit]):
+        self.units = units
+    
+    def attack_all(self):
+        for unit in self.units:
+            unit.strike_option.strike()
+            Army.total_attacks += 1
