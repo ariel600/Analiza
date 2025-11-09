@@ -58,3 +58,4 @@ class Army:
         for unit in self.units:
             unit.strike_option.strike()
             Army.total_attacks += 1
+            
