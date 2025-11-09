@@ -21,5 +21,4 @@ class Secret_Messages:
             return mess.write(self.encryption())
 
     def print_mess(self):
-        with open(self.name_file, "r") as mess:
-            print(mess.read())
+            print(self.message)
