@@ -22,3 +22,4 @@ class Secret_Messages:
 
     def print_mess(self):
             print(self.message)
+
