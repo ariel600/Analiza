@@ -1,0 +1,51 @@
+#1
+SELECT productVendor, COUNT(productVendor)
+FROM products
+GROUP BY productVendor
+
+#2
+SELECT status, COUNT(status)
+FROM orders
+GROUP BY status
+
+#3
+SELECT salesRepEmployeeNumber, AVG(creditLimit)
+FROM customers
+GROUP BY salesRepEmployeeNumber
+
+#4
+SELECT salesRepEmployeeNumber, MIN(creditLimit), MAX(creditLimit)
+FROM customers
+GROUP BY salesRepEmployeeNumber
+
+#5
+SELECT officeCode, COUNT(employeeNumber)
+FROM employees
+GROUP BY officeCode
+
+#6
+SELECT customerNumber, AVG(amount) AS average_payment
+FROM payments
+GROUP BY customerNumber
+ORDER BY average_payment DESC
+
+#7
+SELECT productVendor, AVG(buyPrice)
+FROM products
+GROUP BY productVendor
+
+#8
+SELECT salesRepEmployeeNumber, COUNT(customerNumber)
+FROM customers
+GROUP BY salesRepEmployeeNumber
+
+#9
+SELECT orderDate, COUNT(orderDate) AS number_of_orders
+FROM orders
+GROUP BY orderDate
+ORDER BY number_of_orders DESC
+
+#10
+SELECT productScale, COUNT(*)
+FROM products
+GROUP BY productScale
