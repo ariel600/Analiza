@@ -1,0 +1,9 @@
+CREATE DATABASE school;
+
+CREATE TABLE backup_teachers (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    TeacherName VARCHAR(50) NOT NULL,
+    Email VARCHAR(70) NOT NULL,
+    Phone VARCHAR(15)
+);
+

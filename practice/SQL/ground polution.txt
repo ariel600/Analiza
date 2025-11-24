@@ -1,0 +1,46 @@
+#1
+SELECT *
+FROM ground_polution
+WHERE `Sug tipul` = 'טרם נבדק'
+
+#2
+SELECT *
+FROM ground_polution
+WHERE `Status gas karka`
+LIKE '%יש חשד%'
+
+#3
+SELECT *
+FROM ground_polution
+WHERE `Peelut mezahemet`
+LIKE '%כימית%'
+
+#4
+SELECT *
+FROM ground_polution
+WHERE `Peelut mezahemet`
+LIKE '%מטמנה%'
+
+#5
+SELECT *
+FROM ground_polution
+WHERE `Matzav Minhali`
+LIKE '%חקירה%'
+
+#6
+SELECT *
+FROM ground_polution
+WHERE `Drisha lemigun mivnim`
+LIKE '%טרם נבדק%'
+
+#7
+SELECT *
+FROM ground_polution
+WHERE `Moed thilat tipul` > '2009'
+
+#8
+SELECT *
+from ground_polution
+WHERE `Moed thilat tipul` IN('', NULL)
+
+#9
