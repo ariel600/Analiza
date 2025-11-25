@@ -1,5 +1,3 @@
-from datetime import datetime
-
 class Person:
     def __init__(self, person_id, name, age, email):
         self.person_id = person_id
@@ -9,21 +7,20 @@ class Person:
         self.cars = []
     
     def add_car(self, car):
-        """Add a car to person's cars list"""
-        # TODO: implement
-        pass
+        return self.cars.append(car)
     
     def get_cars_count(self):
-        """Return the number of cars owned"""
-        # TODO: implement
-        pass
+        return len(self.cars)
     
     def __str__(self):
-        """String representation of person"""
-        # TODO: implement
-        pass
+        return f"person_id: {self.person_id}, name: {self.name}, age: {self.age}, email: {self.email}, cars: {self.get_cars_count()}"
+        
     
     def to_dict(self):
-        """Convert person to dictionary"""
-        # TODO: implement
-        pass
+        return {
+            'person_id': self.person_id,
+            'name': self.name,
+            'age': self.age,
+            'email': self.email,
+            'cars': self.cars
+        }

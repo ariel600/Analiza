@@ -1,3 +1,5 @@
+from datetime import datetime
+
 class Car:
     def __init__(self, car_id, brand, model, year, color, owner_id=None):
         self.car_id = car_id
@@ -8,16 +10,18 @@ class Car:
         self.owner_id = owner_id
     
     def get_age(self):
-        """Calculate car age"""
-        # TODO: implement
-        pass
+        year = datetime.now().year
+        return year - self.year
     
     def __str__(self):
-        """String representation of car"""
-        # TODO: implement
-        pass
+        return f"car_id: {self.car_id}, brand: {self.brand}, model: {self.model}, year: {self.year}, color: {self.color(), "owner_id": {self.owner_id}}"
     
     def to_dict(self):
-        """Convert car to dictionary"""
-        # TODO: implement
-        pass
+        return {
+            "car_id": self.car_id,
+            "brand": self.brand,
+            "model": self.model,
+            "year": self.year,
+            "color": self.color,
+            "owner_id": self.owner_id
+        }
