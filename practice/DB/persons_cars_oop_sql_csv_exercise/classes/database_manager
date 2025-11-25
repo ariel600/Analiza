@@ -1,47 +1,52 @@
 import sqlite3
 
-class DatabaseManager:
+class DatabaseManager():
     def __init__(self, db_name='persons_cars.db'):
-        """Initialize database connection"""
         self.db_name = db_name
         self.connection = sqlite3.connect(db_name)
         self.cursor = self.connection.cursor()
-    
+                
+    def free_sqlite(self, db_name, query, params=None, fetch = False):
+        with sqlite3.connect(db_name) as db:
+            cursor = db.cursor()
+            if params: cursor.execute(query, params)
+            else: cursor.execute(query)
+            if fetch: return cursor.fetchall()
+            db.commit()
+            
     def create_tables(self):
-        """Create persons and cars tables"""
-        # TODO: Create persons table
-        # TODO: Create cars table
-        pass
+        query = ('CREATE TABLE persons (person_id INTEGER PRIMARY KEY, name TEXT NOT NULL, age INTEGER NOT NULL, email TEXT UNIQUE NOT NULL)')
+        self.free_sqlite(self.db_name, query)
+        query = ('CREATE TABLE cars (car_id INTEGER PRIMARY KEY, brand TEXT NOT NULL, model TEXT NOT NULL, year INTEGER NOT NULL, color TEXT NOT NULL, owner_id INTEGER, FOREIGN KEY (owner_id) REFERENCES persons(person_id))')
+        self.free_sqlite(self.db_name, query)
     
     def insert_person(self, person):
-        """Insert a person into database"""
-        # TODO: implement
-        pass
-    
+        query = "INSERT INTO persons (name, age, email) VALUES (?, ?, ?)"
+        params = (person["name"], person["age"], person["email"])
+        self.free_sqlite(self.db_name, query, params)
+        
     def insert_car(self, car):
-        """Insert a car into database"""
-        # TODO: implement
-        pass
+        query = "INSERT INTO persons (brand, model, year, color, owner_id) VALUES (?, ?, ?, ?, ?)"
+        params = (car["brand"], car["model"], car["year"], car["color"], car["owner_id"])
+        self.free_sqlite(self.db_name, query, params)
     
     def get_all_persons(self):
-        """Get all persons from database"""
-        # TODO: implement and return list of Person objects
-        pass
+        query = "SELECT * FROM persons"
+        return self.free_sqlite(self.db_name, query, True)
     
     def get_all_cars(self):
-        """Get all cars from database"""
-        # TODO: implement and return list of Car objects
-        pass
+        query = "SELECT * FROM cars"
+        return self.free_sqlite(self.db_name, query, True)
     
     def get_person_by_id(self, person_id):
-        """Get person by ID"""
-        # TODO: implement
-        pass
+        query = "SELECT * FROM persons WHERE person_id = ?"
+        params = (person_id)
+        return self.free_sqlite(self.db_name, query, params, True)
     
     def get_cars_by_owner(self, owner_id):
-        """Get all cars owned by a person"""
-        # TODO: implement
-        pass
+        query = "SELECT * FROM cars WHERE owner_id = ?"
+        person = (owner_id)
+        return self.free_sqlite(self.db_name, query, person, True)
     
     def update_person(self, person):
         """Update person details"""
