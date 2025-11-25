@@ -1,0 +1,58 @@
+import sqlite3
+
+class DatabaseManager:
+    def __init__(self, db_name='persons_cars.db'):
+        """Initialize database connection"""
+        self.db_name = db_name
+        self.connection = sqlite3.connect(db_name)
+        self.cursor = self.connection.cursor()
+    
+    def create_tables(self):
+        """Create persons and cars tables"""
+        # TODO: Create persons table
+        # TODO: Create cars table
+        pass
+    
+    def insert_person(self, person):
+        """Insert a person into database"""
+        # TODO: implement
+        pass
+    
+    def insert_car(self, car):
+        """Insert a car into database"""
+        # TODO: implement
+        pass
+    
+    def get_all_persons(self):
+        """Get all persons from database"""
+        # TODO: implement and return list of Person objects
+        pass
+    
+    def get_all_cars(self):
+        """Get all cars from database"""
+        # TODO: implement and return list of Car objects
+        pass
+    
+    def get_person_by_id(self, person_id):
+        """Get person by ID"""
+        # TODO: implement
+        pass
+    
+    def get_cars_by_owner(self, owner_id):
+        """Get all cars owned by a person"""
+        # TODO: implement
+        pass
+    
+    def update_person(self, person):
+        """Update person details"""
+        # TODO: implement
+        pass
+    
+    def delete_person(self, person_id):
+        """Delete person from database"""
+        # TODO: implement
+        pass
+    
+    def close(self):
+        """Close database connection"""
+        self.connection.close()
